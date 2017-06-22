@@ -14,10 +14,17 @@ let mainWindow
 function createWindow () {
   // Create the browser window.
   mainWindow = new BrowserWindow({width: 800, height: 600})
+  childWindow = new BrowserWindow({width: 80, height: 60, parent: mainWindow})
 
   // and load the index.html of the app.
   mainWindow.loadURL(url.format({
     pathname: path.join(__dirname, 'index.html'),
+    protocol: 'file:',
+    slashes: true
+  }))
+
+  childWindow.loadURL(url.format({
+    pathname: path.join(__dirname, 'child.html'),
     protocol: 'file:',
     slashes: true
   }))
